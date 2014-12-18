@@ -1,11 +1,8 @@
-package Igrica;
-
-/**
- * 
- * @author Sanela, Jesenko, Emir, Davor
- *
- */
-
+	/**
+	 * 
+	 * @author Sanela, Jesenko, Emir, Davor
+	 *
+	 */
 
 public class Jockey extends Zombie {
 
@@ -15,7 +12,17 @@ public class Jockey extends Zombie {
 	}
 
 	public Jockey() {
-	super("Jockey", 50, 50, new Weapon(), 50, 50);
+		super("Jockey", 200, 0.5, new Weapon(), 5, 13);
 	}
-
+	public double Attack(){
+		return super.Attack();
+	}
+	public double specialAttack() {
+		if ((int)(Math.random() * 4) == 0) {
+			return getStrenght() * getSpeed();
+		}
+		else {
+			return 0;
+		}
+}
 }

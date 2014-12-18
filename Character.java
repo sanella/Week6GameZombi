@@ -4,25 +4,25 @@
  *
  */
 public class Character {
-	
+
 	private String name;
 	private double hp;
 	private double dex;
 	private Weapon weapon;
 	private double strenght;
 	private double speed;
-	
+
 	public Character(String name, double hp, double dex, Weapon weapon,
 			double strenght, double speed) {
-		
-		this.name = name;
-		this.hp = hp;
-		this.dex = dex;
-		this.weapon = weapon;
-		this.strenght = strenght;
-		this.speed = speed;
+
+		this.setName(name);
+		this.setHp(hp);
+		this.setDex(dex);
+		this.setWeapon(weapon);
+		this.setStrenght(strenght);
+		this.setSpeed(speed);
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -52,10 +52,22 @@ public class Character {
 	}
 
 	public void setHp(double hp) {
+		if (hp < 0) {
+			this.hp = 0;
+		}
+		if (hp > 200) {
+		this.hp = 200;
+		}
 		this.hp = hp;
 	}
 
 	public void setDex(double dex) {
+		if (dex < 0) {
+			this.dex = 0;
+		}
+		if (dex > 1) {
+			this.dex = 1;
+		}
 		this.dex = dex;
 	}
 
@@ -64,34 +76,63 @@ public class Character {
 	}
 
 	public void setStrenght(double strenght) {
+
+		if (strenght < 0) {
+			this.strenght = 0;
+		}
+		if (strenght > 10) {
+			this.strenght = 10;
+		}
 		this.strenght = strenght;
 	}
 
 	public void setSpeed(double speed) {
+		if (speed < 0) {
+			this.speed = 0;
+		}
+		if (speed > 20) {
+			this.speed = 20;
+		}
 		this.speed = speed;
 	}
 
-	public Character(){
-		
+	public Character() {
+
 		this.name = "name";
-		this.hp = 100;
-		this.dex = 100;
+		this.hp = 200;
+		this.dex = 1;
 		this.weapon = new Weapon();
-		this.strenght = 100;
-		this.speed = 100;
+		this.strenght = 10;
+		this.speed = 20;
 	}
 
 	public String toString() {
 		return "Name: " + name + "\nHP: " + hp + "\nDEX: " + dex
 				+ "\nSTRENGHT: " + strenght + "\nSPEED: " + speed;
-	}	
+	}
+
+	public double Attack() {
+		double newDex = 0;
+		if (dex < 0.5) {
+			newDex = Math.random() * dex;
+			return newDex * strenght;
+		} else {
+			return dex * strenght;
+		}
+	}
+
+	public double specialAttack() {
+		if ((int)(Math.random() * 4) == 0) {
+			return getStrenght() * getSpeed();
+		}
+		else {
+			return 0;
+		}
 	
+	}
 	
-	
-//	public Attack
-	
-//	public specialAttack
-	
-	
+	public void takeDamage(double amount){
+		this.hp -= amount;
+	}
 
 }
