@@ -88,12 +88,9 @@ public class Character {
 	
 	
 	
-
+//	public Attack
 	
-	
-	public Attack
-	
-	public specialAttack
+//	public specialAttack
 	
 	
 
